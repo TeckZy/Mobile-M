@@ -5,7 +5,7 @@
 </p>
 <hr>
 
-# MageCart : MobileM A Php WebApp Online Marketplace 
+#  MobileM A Php WebApp Online Marketplace 
 
 ![React Native](https://img.shields.io/badge/PHP-7.x-brightgreen])
 ![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)
