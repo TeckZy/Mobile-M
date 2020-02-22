@@ -11,6 +11,7 @@ $logindetail = new logindetails;
 
 $email = mysqli_real_escape_string($conn, $_POST['email']);
 $email = strtolower($email);
+
 //echo $email."<br/>";
 
 $pass = mysqli_real_escape_string($conn, $_POST['password']);
@@ -19,9 +20,13 @@ $pass = md5($pass);
 //$systemid=$_SESSION["SystemID"];
 //echo $systemid;     system id generate here
 
+
+
 $query1 = "select * from login where Email='$email' and Password='$pass'";
 $result1 = mysqli_query($conn, $query1);
 $row1 = mysqli_fetch_array($result1, MYSQLI_BOTH);
+
+
 if ($row1 != NULL) {
 	if ($row1["CurrentStatus"] == "false") {
 		$mac = $logindetail->get_mac();
@@ -43,11 +48,10 @@ if ($row1 != NULL) {
 
 		$query3 = "update login set LastLoginDateTime='$datetime',CurrentStatus='$st',CurrentLoginFrom='$from',LoginCount='$logincount' where Email='$email'";
 
-
 		try {
 			mysqli_autocommit($conn, FALSE);
-			mysqli_query($conn, $query2);
-			mysqli_query($conn, $query3);
+			 mysqli_query($conn, $query2);
+			 mysqli_query($conn, $query3);
 
 			if (mysqli_commit($conn)) {
 				$_SESSION['LoginID'] = $row1['Email'];
